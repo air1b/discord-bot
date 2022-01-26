@@ -1,4 +1,9 @@
+import os
+
 import discord
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path="config")
 
 # Recuperation des intents
 default_intents = discord.Intents.default()
@@ -23,6 +28,11 @@ async def on_member_join(member):
 async def on_message(message):
     if message.content.lower() == 'ping':
         await message.channel.send("pong")
+    if message.content.startswith("!del"):
+        number = int (message.content.split()[1])
+        messages = await message.channel.history(limit=number + 1).flatten()
+        
+        for each_message in messages:
+            await each_message.delete()
 
-
-client.run("OTM1NTU3Mjc5Mjk2NjYzNjQy.YfAXnQ.PayklUylkwa_9W3LDe5dRyPFUPo")
+client.run(os.getenv("TOKEN"))

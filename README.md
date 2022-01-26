@@ -199,4 +199,100 @@ async def on_message(message):
         await message.channel.send("pong")
 ```
 
+## Ajouter des commandes
+
+## D.1) Gérer une commande avec le client
+
+Si un user veut supprimer par exemple un de ces messages
+on va avoir recours a un type de commande
+exemple:
+en tapant !del cette commande va detruire les n derniers messages
+creons cette commande pour l'utilisateur.
+
+
+```python
+@client.event
+async def on_message(message):
+      if message.content.startswith("!del"):
+        number = int (message.content.split()[1])
+        messages = await message.channel.history(limit=number + 1).flatten()
+
+        for each_message in messages:
+        await each_message.delete()
+```
+
+Dans notre cas on devra gerer avec un try/catch les erreurs de ce code:
+ - dans le cas ou apres !del on a un string
+ - ou un nombre trop important
+ - ...
+
+Ces problematiques nous introduit au sujet suivant
+
+## D.2) Creer une commande avec un bot
+
+Dans cette parti nous allons voir la second maniere de faire:
+
+```python
+from discord.ext import commands
+
+# prefix pour tout type de commande
+bot commands.Bot(command prefix="!")
+
+@bot.event
+async def on_ready():
+  print("Le bot est prêt")
+
+@bot.command(name='del')
+async def delete(ctx, number_of_messages: int):
+  messages = await ctx.channel.history(Limit=number_of_messages + 1).flatten()
+
+  for each_message in messages:
+    await each_message.delete()
+
+bot.run("Nzg4MDUwjk1MTc5NTc1MzM2.X9d3Bw.tsV-CQYeCa0aD21864a6-XymiEo")
+```
+l'avantage de cette maniere est le cote pensee du code,
+  pour eviter de rentrer dans des complexites.
+
+## Ameliorer notre code
+
+## E.1) Masquer le token
+
+La problematique: ecrire le token dans notre fichier.
+si on heberge sur un endroit publique: exemple un repos github ou autre.
+tout le monde pourra voir notre token et on mettrai en danger notre server.
+pour cela:
+on va installer une librairie pythondotenv pour proceder a l'inclusion de notre token
+sans mettre en danger notre server.
+On va recuperer cette cle depuis un fichier externe a ce script.
+ne SURTOUT PAS OUBLIER d'inclure dans .gitignore ce fichier.
+
+```bash
+pip install -U python-dotenv
+```
+
+checker si l'installation a bien ete faite :
+
+```bash
+pip list | grep dotenv
+```
+
+ensuite dans notre main.py on va rajouter ces lignes de code:
+
+
+```python
+# on va importer la variable d'environnement 
+import os
+
+from dotenv import load_dotenv
+
+# onload le fichier ou se trouve notre token
+load_dotenv (dotenv_path="config")
+
+  ...
+
+client.run(os.getenv("TOKEN"))
+```
+
+de cette maniere on ne va jamais retrouver de problematique d'usurpation de token.
 
