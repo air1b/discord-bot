@@ -296,3 +296,9 @@ client.run(os.getenv("TOKEN"))
 
 de cette maniere on ne va jamais retrouver de problematique d'usurpation de token.
 
+
+## E.2) Creer une classe pour notre bot
+
+On utilisera le bot plutot que le client pour l'oriente-objet
+car comme on l'a vu plus haut, le code est plus versatile.
+l'avantage est qu'on aura plus besoin des decorateurs
