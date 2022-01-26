@@ -302,3 +302,25 @@ de cette maniere on ne va jamais retrouver de problematique d'usurpation de toke
 On utilisera le bot plutot que le client pour l'oriente-objet
 car comme on l'a vu plus haut, le code est plus versatile.
 l'avantage est qu'on aura plus besoin des decorateurs
+
+```python
+import os
+
+#import discord
+from dotenv import load_dotenv
+from discord.ext import commands
+
+load_dotenv(dotenv_path="config")
+
+# creer un bot qui herite de command.Bot
+# heritage
+class DocBot(commands.Bot):
+    def __init__(self):
+        super().__init__(command_prefix="/") # overloading
+
+    async def on_ready(self): # overriding
+        print(f"{self.user.display_name} est connecte au server")
+
+doc_bot = DocBot()
+doc_bot.run(os.getenv("TOKEN"))
+```
