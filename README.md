@@ -37,13 +37,16 @@
    - Créer une classe pour notre bot
    - Aller plus loin
 
+_______
 
-> A.1) A quoi sert un bot discord?
+## Introduction
+
+## A.1) A quoi sert un bot discord?
 
 Execute le comportement d'une personne a sa place
 Ex: donner un cours de bourse quand une personne le demande.
 
-> A.2) difference entre bot et application ?
+## A.2) Difference entre bot et application ?
 
 Pour creer un bot il faut: creer une application dans discord ( a l'interieur de de cette app que l'on dev le bot )
 infos: 
@@ -52,7 +55,7 @@ infos:
   - Le bot a des droits comme un utilisateur.
   - Le comportements ainsi que les reponses donnes par le bot sont codes au prealables
 
-> A.3) Les prerequis 
+## A.3) Les prerequis 
 
   - une application discord
   - un bot 
@@ -64,7 +67,9 @@ techno:
   - Environnement virtuel
   - discord.py (API de discord)
 
-> B.1)
+## Creation d'un bot
+
+## B.1) Creation
 
 Initialisation de notre projet
 
@@ -88,7 +93,7 @@ Verifier que discord a bien ete installer
 ```bash
 pip list
 ```
-> B.2) Ajout du bot
+## B.2) Ajout du bot
 
 Aller sur le portail de discord > section developer > application et creer une nouvelle application.
 
@@ -103,7 +108,7 @@ Copier coller le lien, passer le processus d'ajout, et verifier sur le server la
 Si on va sur les setting du server on pourra voir un role specifique au bot qui lui a ete attribuer, 
 celui ci correspond a la partie Oauth2 > URL GENERATOR.
 
-> B.3) connecter le bot
+## B.3) connecter le bot
 
 creer un script main.py et l'executer
 
@@ -116,7 +121,10 @@ client.run("<BOT-KEY-API>")
 ```
 ce code permet de mettre le bot en ligne
 
-> C.1) on_ready
+
+## Reagir a des evenements
+
+## C.1) L'evenement on_ready
  
 Se connecter est un evenement definit par la methode: on_ready()
 en executant cette methode on va pouvoir mettre en ligne notre robot.
@@ -126,7 +134,7 @@ en executant cette methode on va pouvoir mettre en ligne notre robot.
 la methode on_ready permet d'ecouter si le bot est pret a executer des commandes.
 
 
-> C.2) Reagir a un message
+## C.2) Reagir a un message
 
 on_message() permettra de parser le contenu des messages des 
 users sur le server et introduire a partir de conditions
@@ -143,5 +151,5 @@ s'autodetruit 5 secondes plus tard
 await message.channel.send ("pong", delete_after=5)
 ```
 
-> C.3) Reagire a l'arrivée d'un membre
+## C.3) Reagire a l'arrivée d'un membre
 
