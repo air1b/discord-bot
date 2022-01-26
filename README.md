@@ -1,24 +1,38 @@
 
 
+# CREER UN BOT SUR DISCORD
 
-##SOMMAIRE
+![Dicord, Bot](https://bots.ondiscord.xyz/favicon/android-chrome-256x256.png)
 
-##Introduction
+
+
+## SOMMAIRE
+
+## Introduction
+
    - Pourquoi créer un bot ?
    - La différence entre application et bot
    - Les prérequis
-##Créer le bot
+
+## Créer le bot
+
    - Création du bot
    - Ajouter le bot à un serveur
    - Connecter le bot
-##Réagir à des événements
+
+## Réagir à des événements
+
    - L'événement 'on_ready'
    - Réagir à un message
    - Réagir à l'arrivée d'un membre
-##Ajouter des commandes
+
+## Ajouter des commandes
+
    - Gérer une commande avec le client
    - Créer une commande avec un bot
-##Améliorer notre code   
+
+## Améliorer notre code   
+
    - Masquer le Token
    - Créer une classe pour notre bot
    - Aller plus loin
