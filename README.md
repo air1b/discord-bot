@@ -144,6 +144,8 @@ Dans notre cas present on va inclure async/await pour:
 respecter le bonne ordre et permettre a l'application de
 ne pas bloquer.
 
+![ping pong bot](https://github.com/air1b/discord-bot/raw/master/assets/gif/discordbot-ping-pong.mp4)
+
 on peut dire a notre robot par ex d'envoyer un message et qu'il
 s'autodetruit 5 secondes plus tard
 
