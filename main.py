@@ -1,24 +1,28 @@
 import discord
 
-# Instance du client 
-client = discord.Client()
-i=0
+# Recuperation des intents
+default_intents = discord.Intents.default()
+default_intents.members = True
+
+# i - creation du client
+## Instance du client 
+## + passe en argument les intents du bot
+client = discord.Client(intents=default_intents)
 
 # decorateur depend de l'instance 
 @client.event
 async def on_ready():
     print("Le bot est pret.") # pret a executer des commandes sur le server
     
+@client.event
+async def on_member_join(member):
+    general_channel: discord.TextChannel = client.get_channel(935507531638382646)
+    await general_channel.send(content=f"Bienvenue sur le server {member.display_name} !")
 
 @client.event
 async def on_message(message):
-    global i
-    if i == 0:
-        await message.channel.send("Hello World!")
-        i=1
     if message.content.lower() == 'ping':
         await message.channel.send("pong")
 
 
-client.run("OTM1NTU3Mjc5Mjk2NjYzNjQy.YfAXnQ.7U7lHl_RDGfzKC2aOItP9ASD4tg")
-
+client.run("OTM1NTU3Mjc5Mjk2NjYzNjQy.YfAXnQ.PayklUylkwa_9W3LDe5dRyPFUPo")
